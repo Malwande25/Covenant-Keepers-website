@@ -1,117 +1,109 @@
-// ================= MOBILE NAVIGATION TOGGLE =================
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('.nav-links');
+/* ============================================
+   COVENANT KEEPERS — script.js
+   ============================================ */
 
-navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
+document.addEventListener('DOMContentLoaded', () => {
 
-// ================= SMOOTH SCROLLING =================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const target = document.querySelector(this.getAttribute('href'));
-        if (!target) return;
-
-        target.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-        // Close mobile menu after click
-        navLinks.classList.remove('active');
+  /* ---- Mobile Nav Toggle ---- */
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
     });
-});
+    // Close on link click
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+  }
 
-// ================= SCROLL ANIMATIONS =================
-// Elements to animate
-const animatedElements = document.querySelectorAll(
-    '.mission-card, .objectives-list li, .background-content p, .pledge-box'
-);
+  /* ---- Active Nav Link ---- */
+  const page = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    if (link.getAttribute('href') === page) {
+      link.classList.add('active');
+    }
+  });
 
-// Intersection Observer for fade-in
-const observerOptions = {
-    threshold: 0.1
-};
+  /* ---- Hero Slider ---- */
+  const slider = document.querySelector('.hero-slider');
+  if (slider) {
+    const slides = slider.querySelectorAll('.slide');
+    const dotsContainer = slider.querySelector('.slider-dots');
+    let current = 0;
 
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
+    // Create dots
+    if (dotsContainer) {
+      slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      if (dotsContainer) dotsContainer.children[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      if (dotsContainer) dotsContainer.children[current].classList.add('active');
+    }
+
+    if (slides.length > 0) {
+      slides[0].classList.add('active');
+      setInterval(() => goTo(current + 1), 5000);
+    }
+  }
+
+  /* ---- Scroll Fade-In ---- */
+  const fadeEls = document.querySelectorAll('.fade-in');
+  if (fadeEls.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target); // Animate only once
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
-    });
-}, observerOptions);
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+  }
 
-// Apply observer to each element
-animatedElements.forEach(el => {
-    el.classList.add('fade-hidden'); // initially hidden
-    observer.observe(el);
+  /* ---- Animate progress bars ---- */
+  const bars = document.querySelectorAll('.progress-fill[data-width]');
+  if (bars.length > 0) {
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.width = entry.target.dataset.width;
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    bars.forEach(b => { b.style.width = '0'; barObserver.observe(b); });
+  }
+
+  /* ---- Animate stat numbers ---- */
+  const statNums = document.querySelectorAll('.stat-number[data-target]');
+  statNums.forEach(el => {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    let start = 0;
+    const duration = 1800;
+    const startTime = performance.now();
+    function tick(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    const numObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { requestAnimationFrame(tick); numObserver.unobserve(e.target); }});
+    }, { threshold: 0.5 });
+    numObserver.observe(el);
+  });
+
 });
-
-// ================= STAGGERED FADE-IN =================
-const staggerElements = document.querySelectorAll('.mission-card, .objectives-list li');
-
-staggerElements.forEach((el, index) => {
-    el.classList.add('fade-hidden'); // initial hidden
-    const delay = index * 150; // 150ms delay between elements
-    setTimeout(() => {
-        el.classList.add('fade-in');
-        el.classList.remove('fade-hidden');
-    }, delay + 300); // start after 300ms
-});
-
-// Inject shared navigation into all subpages
-
-const navHTML = `
-<nav>
-<ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<ul>
-<li><a href="realmen.html">Real Men’s Club</a></li>
-<li><a href="health.html">Health & Wellness</a></li>
-<li><a href="fatherhood.html">Fatherhood</a></li>
-<li><a href="community.html">Community Footprint</a></li>
-<li><a href="skills.html">Skills Development</a></li>
-<li><a href="fundraising.html">Fundraising</a></li>
-<li><a href="admin.html">Secretary General Office</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-`;
-
-const navContainer = document.querySelector('.include-nav');
-if(navContainer){
-    navContainer.outerHTML = navHTML;
-}
-
-/* =========================
-   IMAGE SLIDER FUNCTIONALITY
-========================= */
-
-function initSlider() {
-    const sliders = document.querySelectorAll('.slider');
-
-    sliders.forEach(slider => {
-        const slides = slider.querySelectorAll('.slide');
-        let index = 0;
-
-        function showSlide(i) {
-            slides.forEach((slide, idx) => {
-                slide.style.display = idx === i ? 'block' : 'none';
-            });
-        }
-
-        function nextSlide() {
-            index = (index + 1) % slides.length;
-            showSlide(index);
-        }
-
-        showSlide(index);
-        setInterval(nextSlide, 4000);
-    });
-}
-
-// Run slider after DOM loads
-window.addEventListener('DOMContentLoaded', initSlider);

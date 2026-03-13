@@ -1,65 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Covenant Keepers | Develop the Whole Man</title>
-
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secretary General Office | Covenant Keepers</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
 <header>
-    <nav>
-        <div class="logo"><img src="img/logo.png" alt="Covenant Keepers Logo" class="logo-img">
-        Covenant Keepers
+  <nav>
+    <div class="logo">
+      <img src="img/logo.png" alt="Covenant Keepers Logo" class="logo-img">
+      Covenant Keepers
     </div>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Health.html">Health &amp; Wellness</a></li>
+      <li><a href="Fatherhood.html">Fatherhood</a></li>
+      <li><a href="Community.html">Community Footprint</a></li>
+      <li><a href="Skills.html">Skills Development</a></li>
+      <li><a href="Fundraising.html">Fundraising</a></li>
+      <li><a href="Admin.html">Secretary General</a></li>
+    </ul>
+  </nav>
+</header>
 
-        <button class="nav-toggle" aria-label="Toggle navigation">
-            ☰
-        </button>
+<div class="breadcrumb">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li class="current">Secretary General Office</li>
+  </ul>
+</div>
 
-        <ul class="nav-links">
-            <li><a href="#pledge">Our Pledge</a></li>
-            <li><a href="Realmen.html">Real Men’s Club</a></li>
-            <li><a href="Health.html">Health & Wellness</a></li>
-            <li><a href="Fatherhood.html">Fatherhood</a></li>
-            <li><a href="Community.html">Community Footprint</a></li>
-            <li><a href="Skills.html">Skills Development</a></li>
-            <li><a href="Fundraising.html">Fundraising</a></li>
-            
+<div class="page-banner">
+  <h1>Secretary General Office</h1>
+  <p>Administration, governance, and contact for Covenant Keepers</p>
+</div>
+
+<!-- INTRO -->
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div class="fade-in">
+        <span class="section-label">The Office of Administration</span>
+        <h2>Governing with Integrity</h2>
+        <div class="ornament">✦</div>
+        <p>The Secretary General Office serves as the administrative heart of Covenant Keepers — coordinating regional operations, maintaining governance standards, managing membership records, and ensuring that our programmes run with excellence and accountability.</p>
+        <p>We are committed to transparent, faith-based stewardship of every resource entrusted to us — whether time, finances, or people.</p>
+      </div>
+      <div class="img-frame fade-in">
+        <img src="img/real4.jpg" alt="Administration office" style="min-height:280px; background:var(--navy-light);">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMIN CONTENT WITH SIDEBAR -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="admin-grid">
+
+      <!-- SIDEBAR -->
+      <aside class="admin-sidebar fade-in">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#contact" class="active">Contact the Office</a></li>
+          <li><a href="#regions">Regional Structure</a></li>
+          <li><a href="#documents">Key Documents</a></li>
+          <li><a href="#calendar">Events Calendar</a></li>
+          <li><a href="Fundraising.html">Donate / Support</a></li>
         </ul>
-    </nav>
-</header>
 
-<body>
+        <h3 style="margin-top:2rem;">Office Hours</h3>
+        <p style="color:var(--stone-dark); font-size:0.92rem; line-height:1.9;">
+          Mon – Fri<br>
+          <strong style="color:var(--gold-light);">08:00 – 17:00</strong><br><br>
+          Saturday<br>
+          <strong style="color:var(--gold-light);">09:00 – 13:00</strong><br><br>
+          Sunday: Closed
+        </p>
+      </aside>
 
-<header class="hero small-hero" style="background-image:url('img/administration.jpg');">
-<div class="hero-content"><h1>Secretary General – Office of Administrators</h1></div>
-</header>
+      <!-- MAIN CONTENT -->
+      <div>
 
-<nav class="include-nav"></nav>
+        <!-- CONTACT FORM -->
+        <div id="contact" style="margin-bottom:3rem;">
+          <span class="section-label">Get in Touch</span>
+          <h2>Contact the Secretary General</h2>
+          <div class="ornament">✦</div>
+          <p>Whether you are enquiring about membership, reporting from a regional leader, or looking for programme information — we are here to assist.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem;">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="+27 (0) 00 000 0000">
+            </div>
+            <div class="form-group">
+              <label for="region">Your Region</label>
+              <select id="region">
+                <option value="">— Select your region —</option>
+                <option>Gauteng</option>
+                <option>KwaZulu-Natal</option>
+                <option>Western Cape</option>
+                <option>Eastern Cape</option>
+                <option>Limpopo</option>
+                <option>Mpumalanga</option>
+                <option>Free State</option>
+                <option>North West</option>
+                <option>Northern Cape</option>
+              </select>
+            </div>
+            <div class="form-group" style="grid-column:1/-1;">
+              <label for="subject">Subject *</label>
+              <input type="text" id="subject" placeholder="Brief subject of your enquiry">
+            </div>
+            <div class="form-group" style="grid-column:1/-1;">
+              <label for="message">Message *</label>
+              <textarea id="message" placeholder="Please describe your enquiry in detail..." style="min-height:140px;"></textarea>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="alert('Thank you for your message. The Secretary General\'s Office will respond within 2 business days.')">Submit Enquiry</button>
+        </div>
 
-<main class="container">
-<h2>Vision</h2>
-<p>To serve as the vital link between leadership, members, and external stakeholders by </p>
-<p>enabling strategic leadership, efficient administration, and effective communication.</p>
+        <hr class="divider">
 
-<h2>Description</h2>
-<p>Overseeing governance, record-keeping, compliance, departmental coordination, and strategic administration.</p>
+        <!-- REGIONAL STRUCTURE -->
+        <div id="regions" style="margin-bottom:3rem;">
+          <span class="section-label">Organisation Structure</span>
+          <h2>Regional Leadership</h2>
+          <div class="ornament">✦</div>
+          <p>Covenant Keepers operates through a network of regional leaders who report to the Secretary General Office and implement programmes at a grassroots level.</p>
+          <table class="styled-table" style="margin-top:1.5rem;">
+            <thead>
+              <tr>
+                <th>Region</th>
+                <th>Regional Leader</th>
+                <th>Contact</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Gauteng</td>
+                <td>Bro. T. Mokoena</td>
+                <td>gauteng@covenantkeepers.org</td>
+                <td><span class="badge">Active</span></td>
+              </tr>
+              <tr>
+                <td>KwaZulu-Natal</td>
+                <td>Bro. S. Dlamini</td>
+                <td>kzn@covenantkeepers.org</td>
+                <td><span class="badge">Active</span></td>
+              </tr>
+              <tr>
+                <td>Western Cape</td>
+                <td>Bro. A. Philander</td>
+                <td>wcape@covenantkeepers.org</td>
+                <td><span class="badge">Active</span></td>
+              </tr>
+              <tr>
+                <td>Limpopo</td>
+                <td>Bro. E. Sithole</td>
+                <td>limpopo@covenantkeepers.org</td>
+                <td><span class="badge">Active</span></td>
+              </tr>
+              <tr>
+                <td>Eastern Cape</td>
+                <td><em style="color:var(--text-light);">Vacant</em></td>
+                <td>ecape@covenantkeepers.org</td>
+                <td><span class="badge" style="background:var(--gold-pale); border-color:var(--gold); color:var(--navy);">Recruiting</span></td>
+              </tr>
+              <tr>
+                <td>Mpumalanga</td>
+                <td>Bro. P. Mahlangu</td>
+                <td>mpu@covenantkeepers.org</td>
+                <td><span class="badge">Active</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-<h3>Key Responsibilities</h3>
-<ul>
-    <li>Collecting, presenting, and archiving organizational work across regions.</li>
-    <li>Managing departments of Sales & Marketing, Events Management, Monitoring &
-        Evaluation, and Administration.</li>
-    <li>Overseeing day-to-day operations, ensuring functionality across all portfolios.</li>
-    <li>Producing quarterly, semester, and annual reports.</li>
-</ul>
+        <hr class="divider">
 
-</main>
+        <!-- DOCUMENTS -->
+        <div id="documents">
+          <span class="section-label">Governance</span>
+          <h2>Key Documents</h2>
+          <div class="ornament">✦</div>
+          <ul class="initiatives">
+            <li>
+              <span class="init-icon">📋</span>
+              <div>
+                <strong>Constitution &amp; Statement of Faith</strong><br>
+                The foundational governance document defining our beliefs, structure, and code of conduct.
+                <br><a href="#" style="font-size:0.9rem; color:var(--gold);">Request a Copy →</a>
+              </div>
+            </li>
+            <li>
+              <span class="init-icon">📊</span>
+              <div>
+                <strong>Annual Report 2024</strong><br>
+                A full account of our programmes, impact, and financial stewardship for the year.
+                <br><a href="#" style="font-size:0.9rem; color:var(--gold);">Request a Copy →</a>
+              </div>
+            </li>
+            <li>
+              <span class="init-icon">📅</span>
+              <div>
+                <strong>2025 Programme Calendar</strong><br>
+                Dates and venues for all regional events, trainings, and the Presidential Cup.
+                <br><a href="#" style="font-size:0.9rem; color:var(--gold);">Request a Copy →</a>
+              </div>
+            </li>
+            <li>
+              <span class="init-icon">📝</span>
+              <div>
+                <strong>Membership Application Form</strong><br>
+                Join Covenant Keepers formally as a member of your regional chapter.
+                <br><a href="#" style="font-size:0.9rem; color:var(--gold);">Request a Copy →</a>
+              </div>
+            </li>
+          </ul>
+        </div>
 
-<script src="script.js"></script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERSE -->
+<section class="section">
+  <div class="container">
+    <div class="verse-block fade-in">
+      <blockquote>
+        "Let all things be done decently and in order."
+      </blockquote>
+      <cite>1 Corinthians 14:40</cite>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo" class="logo-img" style="height:36px;width:36px;">
+        Covenant Keepers
+      </div>
+      <p>Restoring moral fibre through Christ-centred initiatives. Developing men of faith, character, and community.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Programmes</h4>
+      <ul>
+        <li><a href="Health.html">Health &amp; Wellness</a></li>
+        <li><a href="Fatherhood.html">Fatherhood</a></li>
+        <li><a href="Community.html">Community Footprint</a></li>
+        <li><a href="Skills.html">Skills Development</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Organisation</h4>
+      <ul>
+        <li><a href="Fundraising.html">Fundraising</a></li>
+        <li><a href="Admin.html">Secretary General</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <p style="font-size:0.92rem; color:var(--stone-dark); line-height:1.8;">
+        📍 South Africa<br>
+        ✉️ info@covenantkeepers.org<br>
+        📞 +27 (0) 00 000 0000
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Covenant Keepers. All rights reserved.</span>
+    <span style="color:var(--gold); font-style:italic; font-family:'EB Garamond',serif; font-size:0.85rem;">
+      "As for me and my house, we will serve the Lord." — Joshua 24:15
+    </span>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>

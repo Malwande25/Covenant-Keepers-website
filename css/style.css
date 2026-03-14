@@ -73,10 +73,10 @@ header {
 }
 
 nav {
-  display: block; align-items: center; justify-content: space-evenly;
+  display: flex; align-items: center; justify-content: space-around;
   max-width: 100%; margin: 0 auto;
   padding: 0;
-  height: 100px;
+  height: 80px;
 }
 
 .logo {
@@ -91,7 +91,7 @@ nav {
 .logo-img {
   height: 60px; width: 60px;
   border-radius: 10%;
-  border: 0px solid var(--gold);
+  border: 1px solid var(--gold);
   object-fit: contain;
   /* Placeholder color if image missing */
   background: var(--navy-light);
@@ -131,7 +131,7 @@ nav {
    ============================================ */
 .hero-slider {
   position: relative;
-  height: 560px;
+  height: 760px;
   overflow: hidden;
   background: var(--navy);
 }
